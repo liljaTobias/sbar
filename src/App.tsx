@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const App: React.FC = () => {
-    return <h1>HEJHEJ</h1>
+    const [test, setTest] = useState('hejsan')
+    return (
+        <div>
+            <h1>{test}</h1>
+            <input onChange={e => setTest(e.target.value)} />
+        </div>
+    )
 }
 
 export default App
