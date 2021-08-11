@@ -1,8 +1,8 @@
 {
-  "name": "cookingparser",
+  "name": "sbar",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:liljaTobias/cookingparser.git",
+  "repository": "git@github.com:liljaTobias/sbar.git",
   "author": "Tobias Lilja <tobias.lilja@axis.com>",
   "license": "MIT",
   "scripts": {
