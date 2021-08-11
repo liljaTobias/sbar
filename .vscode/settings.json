@@ -3,5 +3,41 @@
     "editor.formatOnPaste": true,
     "eslint.options": {
         "ignorePattern": "webpack.config.js",
+    },
+    "folderTemplates.structures": [
+        {
+            "name": "React/TS component",
+            "structure": [
+                {
+                    "fileName": "<FTName>.tsx",
+                    "template": "Typescript Functional Component"
+                },
+                {
+                    "fileName": "tests/<FTName>.test.ts"
+                },
+                {
+                    "fileName": "index.ts",
+                    "template": "IndexFile"
+                },
+            ]
+        }
+    ],
+    "folderTemplates.fileTemplates": {
+        "Typescript Functional Component": [
+            "import React from 'react'",
+            "",
+            "interface <FTName>Props {",
+            "}",
+            "",
+            "const <FTName>: React.FC<<FTName>Props> = (props) => {",
+            "  return <div/>",
+            "}",
+            "",
+            "export default <FTName>"
+        ],
+        "Indexfile": [
+            "import <FTName> from './<FTName>'",
+            "export default <FTName>"
+        ]
     }
 }

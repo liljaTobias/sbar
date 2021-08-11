@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import LandingPage from '../landingpage/'
-import Parsed from '../parsed/'
+import OverviewPage from '../OverviewPage'
+import { Container, makeStyles, Typography } from '@material-ui/core'
+
+const useStyles = makeStyles({
+    h1: {
+        fontSize: '2em'
+    }
+})
 
 const App: React.FC = () => {
-    const [test, setTest] = useState('hejsan')
+    const styles = useStyles()
     return (
-        <Router>
-            <Switch>
-                <Route path="/parsed/:url" component={Parsed} />
-                <Route path="/" component={LandingPage} />
-            </Switch>
-        </Router>
+        <Container maxWidth="sm">
+            <Typography variant="h1" className={styles.h1}>Rapporteringsstöd</Typography>
+            <Router>
+                <Switch>
+                    <Route path="/" component={OverviewPage} />
+                </Switch>
+            </Router>
+        </Container>
     )
 }
 
