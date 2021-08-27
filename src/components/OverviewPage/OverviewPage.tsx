@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStyles, List, makeStyles, Theme } from '@material-ui/core'
+import { createStyles, List, makeStyles, Theme, Typography } from '@material-ui/core'
 import ListWithCollapsable from './ListWithCollapsable'
 
 import Database from '../../utils/database'
@@ -7,6 +7,9 @@ import Database from '../../utils/database'
 const useStyles = makeStyles((theme: Theme) => createStyles({
     list: {
         background: theme.palette.background.paper
+    },
+    h1: {
+        fontSize: '2em'
     }
 }))
 
@@ -18,6 +21,7 @@ const OverviewPage: React.FC<OverviewPageProps> = (props) => {
 
     return (
         <div>
+            <Typography variant="h1" className={styles.h1}>Rapporteringsstöd</Typography>
             <List className={styles.list}>
                 {Database.map(entry => (
                     <ListWithCollapsable title={entry.name} button={entry.button} level={1}>

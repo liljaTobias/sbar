@@ -76,4 +76,32 @@ const Database = [
     }
 ]
 
+export const Categories = [
+    { id: 1, name: "S - Situation", actions: ['Presentation'] },
+    { id: 2, name: "B - Bakgrund" },
+    { id: 3, name: "A - Aktuellt" },
+    { id: 4, name: "R - Rekommendation" },
+    { id: 5, name: "Skalor" },
+]
+
+export const SubCategories = [
+    {
+        parent: 1,
+        id: 1,
+        actions: ['Presentation'],
+    }
+]
+
+export const Actions = [
+    {
+        id: 1,
+        parent: 1,
+        actions: [
+            "Presentation av dig själv med namn, titel, område",
+            "Presentation av vårdtagare med namen, ålder, personnummer och adress",
+            "Vad är problemet/anledningen till kontakten"
+        ]
+    }
+]
+
 export default Database
