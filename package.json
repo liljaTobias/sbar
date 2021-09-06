@@ -16,16 +16,17 @@
     "@material-ui/icons": "^4.11.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-query": "^3.21.1",
     "react-router-dom": "^5.2.0",
     "typescript": "^4.3.4"
   },
   "devDependencies": {
-    "@babel/core": "latest",
-    "@babel/preset-env": "latest",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4",
     "@babel/preset-react": "latest",
     "@babel/preset-typescript": "latest",
     "@types/material-ui": "^0.21.9",
-    "@types/react": "latest",
+    "@types/react": "^17.0.20",
     "@types/react-dom": "latest",
     "@types/react-router-dom": "^5.1.8",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
@@ -42,8 +43,8 @@
     "prettier": "^2.3.2",
     "style-loader": "latest",
     "ts-loader": "latest",
-    "webpack": "latest",
-    "webpack-cli": "latest",
-    "webpack-dev-server": "latest"
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.1"
   }
 }
