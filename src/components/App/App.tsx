@@ -1,25 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import OverviewPage from '../OverviewPage'
-import { Container, makeStyles, Typography } from '@material-ui/core'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-const useStyles = makeStyles({
-    h1: {
-        fontSize: '2em'
-    }
-})
+import ListPage from '../List'
+import { ThemeProvider } from '@material-ui/core'
+import { theme } from '../../utils/theme'
 
 const App: React.FC = () => {
-    const styles = useStyles()
+    const queryClient = new QueryClient()
+
     return (
-        <Container maxWidth="sm">
-            <Typography variant="h1" className={styles.h1}>Rapporteringsstöd</Typography>
-            <Router>
-                <Switch>
-                    <Route path="/" component={OverviewPage} />
-                </Switch>
-            </Router>
-        </Container>
+        <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme}>
+                <Router>
+                    <Switch>
+                        <Route path="/" component={ListPage} />
+                    </Switch>
+                </Router>
+            </ThemeProvider>
+        </QueryClientProvider >
     )
 }
 

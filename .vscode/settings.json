@@ -13,7 +13,11 @@
                     "template": "Typescript Functional Component"
                 },
                 {
-                    "fileName": "tests/<FTName>.test.ts"
+                    "fileName": "tests/<FTName>.test.js"
+                },
+                {
+                    "fileName": "<FTName>.style.ts",
+                    "template": "Styles"
                 },
                 {
                     "fileName": "index.ts",
@@ -25,19 +29,30 @@
     "folderTemplates.fileTemplates": {
         "Typescript Functional Component": [
             "import React from 'react'",
+            "import { useStyles } from './<FTName>.style.ts",
             "",
             "interface <FTName>Props {",
             "}",
             "",
             "const <FTName>: React.FC<<FTName>Props> = (props) => {",
+            "const styles = useStyles()",
             "  return <div/>",
             "}",
             "",
             "export default <FTName>"
         ],
+        "Styles": [
+            "import { makeStyles } from '@material-ui/core",
+            "",
+            "const useStyles = makeStyles({",
+            "})",
+            "",
+            "export { useStyles }"
+        ],
         "Indexfile": [
             "import <FTName> from './<FTName>'",
             "export default <FTName>"
         ]
-    }
+    },
+    "eslint.packageManager": "yarn"
 }
