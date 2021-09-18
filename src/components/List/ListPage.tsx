@@ -14,7 +14,7 @@ const useOrganization = (organization_id: string) => {
 }
 
 const ListPage: React.FC = () => {
-    const { data, isFetching } = useOrganization('halmstad')
+    const { status, data, isFetching } = useOrganization('halmstad')
 
     return (
         <Container maxWidth="sm">
@@ -22,7 +22,7 @@ const ListPage: React.FC = () => {
                 <CircularProgress />
             </Backdrop>
             <Typography variant="h2">{data?.organization_name}</Typography>
-            <CategoryList categories={data?.categories} />
+            {status === "success" && <CategoryList categories={data?.categories} />}
         </Container>
     )
 
