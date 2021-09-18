@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { GenerateSW, InjectManifest } = require("workbox-webpack-plugin");
+const { InjectManifest } = require("workbox-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
@@ -8,7 +8,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, "build"),
         filename: "index.bundle.js",
-        assetModuleFilename: 'images/[hash][ext][query]'
+        assetModuleFilename: 'images/[hash][ext][query]',
+        clean: true
     },
     mode: process.env.NODE_ENV || "development",
     resolve: {
@@ -44,6 +45,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "src", "index.html"),
         }),
+    ],
+};
+
+if (process.env.NODE_ENV === 'production') {
+    module.exports.plugins.push(
         new InjectManifest({
             swSrc: path.resolve(
                 __dirname,
@@ -58,5 +64,5 @@ module.exports = {
                 { from: "src/images/icon-192x192.png", to: "images/icon-512x512.png" }
             ]
         })
-    ],
-};
+    )
+}
