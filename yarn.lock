@@ -5571,7 +5571,7 @@ webpack-dev-server@^4.1.1:
     webpack-dev-middleware "^5.0.0"
     ws "^8.1.0"
 
-webpack-merge@^5.7.3:
+webpack-merge@^5.7.3, webpack-merge@^5.8.0:
   version "5.8.0"
   resolved "https://registry.npmjs.org/webpack-merge/-/webpack-merge-5.8.0.tgz#2b39dbf22af87776ad744c390223731d30a68f61"
   integrity sha512-/SaI7xY0831XwP6kzuwhKWVKDP9t1QY1h65lAFLbZqMPIuYcD9QAW4u9STIbU9kaJbPBB/geU/gLr1wDjOhQ+Q==
@@ -5732,7 +5732,7 @@ workbox-build@6.3.0:
     workbox-sw "6.3.0"
     workbox-window "6.3.0"
 
-workbox-cacheable-response@6.3.0:
+workbox-cacheable-response@6.3.0, workbox-cacheable-response@^6.3.0:
   version "6.3.0"
   resolved "https://registry.npmjs.org/workbox-cacheable-response/-/workbox-cacheable-response-6.3.0.tgz#9900980035ab8f70f2582711299d3c0ce09d9419"
   integrity sha512-oYCRGF6PFEmJJkktdxYw/tcrU8N5u/2ihxVSHd+9sNqjNMDiXLqsewcEG544f1yx7gq5/u6VcvUA5N62KzN1GQ==
@@ -5804,7 +5804,7 @@ workbox-routing@6.3.0, workbox-routing@^6.3.0:
   dependencies:
     workbox-core "6.3.0"
 
-workbox-strategies@6.3.0:
+workbox-strategies@6.3.0, workbox-strategies@^6.3.0:
   version "6.3.0"
   resolved "https://registry.npmjs.org/workbox-strategies/-/workbox-strategies-6.3.0.tgz#1d004f42b309cbfa48812c6cc7a8da6458b928c6"
   integrity sha512-SYZt40y+Iu5nA+UEPQOrAuAMMNTxtUBPLCIaMMb4lcADpBYrNP1CD+/s2QsrxzS651a8hfi06REKt+uTp1tqfw==

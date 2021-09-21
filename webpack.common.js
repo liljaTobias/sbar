@@ -1,7 +1,5 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { InjectManifest } = require("workbox-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
     entry: "./src/index.tsx",
@@ -11,13 +9,8 @@ module.exports = {
         assetModuleFilename: 'images/[hash][ext][query]',
         clean: true
     },
-    mode: process.env.NODE_ENV || "development",
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
-    },
-    devServer: {
-        port: 9000,
-        historyApiFallback: true
     },
     module: {
         rules: [
@@ -46,23 +39,4 @@ module.exports = {
             template: path.join(__dirname, "src", "index.html"),
         }),
     ],
-};
-
-if (process.env.NODE_ENV === 'production') {
-    module.exports.plugins.push(
-        new InjectManifest({
-            swSrc: path.resolve(
-                __dirname,
-                'src/service-worker.js'
-            ),
-            swDest: "service-worker.js"
-        }),
-        new CopyPlugin({
-            patterns: [
-                { from: "src/manifest.json", to: "manifest.json" },
-                { from: "src/images/icon-192x192.png", to: "images/icon-192x192.png" },
-                { from: "src/images/icon-192x192.png", to: "images/icon-512x512.png" }
-            ]
-        })
-    )
 }
