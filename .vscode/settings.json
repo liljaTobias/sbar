@@ -2,7 +2,7 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "eslint.options": {
-        "ignorePattern": "webpack.config.js",
+        "ignorePattern": "webpack.*.js",
     },
     "folderTemplates.structures": [
         {
