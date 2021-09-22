@@ -1,11 +1,12 @@
+import { makeStyles, createStyles, Theme, List, ListItem, ListItemText, Collapse } from "@material-ui/core"
+import ExpandLess from "@material-ui/icons/ExpandLess"
+import ExpandMore from "@material-ui/icons/ExpandMore"
 import React, { useState } from "react"
-import { Collapse, List, ListItem, ListItemText, Theme, createStyles } from "@material-ui/core"
+import { SubCategory } from "../List/types"
 
-import ExpandLess from '@material-ui/icons/ExpandLess'
-import ExpandMore from '@material-ui/icons/ExpandMore'
-import { makeStyles } from "@material-ui/styles"
-
-import { Category, SubCategory } from "./types"
+interface SubCategoryListProps {
+    subcategories: Array<SubCategory> | undefined
+}
 
 const useStyles = makeStyles(({ palette }: Theme) => createStyles({
     categoryList: {
@@ -13,19 +14,14 @@ const useStyles = makeStyles(({ palette }: Theme) => createStyles({
     },
     subCategoryList: {
         backgroundColor: palette.subCategoryBg.main,
+        "&:focus": {
+            backgroundColor: palette.subCategoryBg.main,
+        }
     },
     actionList: {
         backgroundColor: palette.grey[100]
     }
 }))
-
-interface CategoryListProps {
-    categories: Array<Category> | undefined
-}
-
-interface SubCategoryListProps {
-    subcategories: Array<SubCategory> | undefined
-}
 
 const handleOpen = (idx: number, arr: Array<boolean>): Array<boolean> => {
     const newArr = [...arr.slice(0, idx), !arr[idx], ...arr.slice(idx + 1)]
@@ -63,29 +59,4 @@ const SubCategoryList: React.FC<SubCategoryListProps> = ({ subcategories = [] })
     )
 }
 
-const CategoryList: React.FC<CategoryListProps> = ({ categories = [] }) => {
-    const [isOpen, setIsOpen] = useState(new Array(categories.length).fill(false))
-    const classes = useStyles()
-
-    return (
-        <List>
-            {categories.map((category, idx) => (
-                <div key={category.category_id}>
-                    <ListItem
-                        button
-                        onClick={() => setIsOpen(handleOpen(idx, isOpen))}
-                        className={classes.categoryList}
-                    >
-                        <ListItemText primary={category.category_name} />
-                        {isOpen[idx] ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-                    <Collapse in={isOpen[idx]} unmountOnExit>
-                        <SubCategoryList subcategories={category.subcategories} />
-                    </Collapse>
-                </div>
-            ))}
-        </List >
-    )
-}
-
-export default CategoryList
+export default SubCategoryList
