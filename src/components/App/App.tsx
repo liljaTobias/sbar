@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import ListPage from '../List'
 import { ThemeProvider } from '@material-ui/core'
 import { theme } from '../../utils/theme'
+import Dashboard from '../Dashboard'
 
 const App: React.FC = () => {
     const queryClient = new QueryClient()
@@ -14,6 +15,7 @@ const App: React.FC = () => {
             <ThemeProvider theme={theme}>
                 <Router>
                     <Switch>
+                        <Route path="/dashboard" component={Dashboard} />
                         <Route path="/" component={ListPage} />
                     </Switch>
                 </Router>
