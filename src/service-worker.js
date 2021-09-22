@@ -12,6 +12,8 @@ import { NetworkFirst } from 'workbox-strategies'
  */
 const ignored = self.__WB_MANIFEST
 
+caches.delete("pages")
+
 registerRoute(
     ({ request }) => request.mode === 'navigate',
     new NetworkFirst({
