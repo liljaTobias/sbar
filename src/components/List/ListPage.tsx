@@ -1,31 +1,35 @@
-import { Backdrop, CircularProgress, Container, Typography } from "@material-ui/core"
-import React from "react"
-import { useQuery } from "react-query"
-import CategoryList from "./CategoryList"
-import { Organization } from "./types"
+import React, { useMemo } from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 
-const useOrganization = (organization_id: string) => {
-    return useQuery<Organization, Error>("categories", async () => {
-        const BASE_URL = 'https://t1vy4habx7.execute-api.eu-north-1.amazonaws.com/organizations'
-        const res = await fetch(`${BASE_URL}/${organization_id}`)
-        const data = await res.json()
-        return data.Item
-    }, { refetchOnWindowFocus: false })
-}
+import { useOrganization } from '../../api/orgaizationAPI'
+import CategoryTabs from './CategoryTabs'
+import { useStyles } from './ListPage.style'
+import Menu from '../Menu'
+import SubCategoryList from '../Dashboard/SubCategoryList'
 
-const ListPage: React.FC = () => {
+const ListPage: React.FC<RouteComponentProps<{ tab: string }>> = ({
+    match: {
+        params: { tab },
+    },
+}) => {
     const { status, data, isFetching } = useOrganization('halmstad')
+    const classes = useStyles()
+
+    const activeTab = useMemo(() => {
+        if (status === 'success') {
+            const idx = data.categories.findIndex((c) => c.category_id === tab)
+            return idx
+        }
+    }, [tab, data])
 
     return (
-        <Container maxWidth="sm">
-            <Backdrop open={isFetching}>
-                <CircularProgress />
-            </Backdrop>
-            <Typography variant="h2">{data?.organization_name}</Typography>
-            {status === "success" && <CategoryList categories={data?.categories} />}
-        </Container>
+        <>
+            <Menu>
+                <CategoryTabs />
+            </Menu>
+            {status === 'success' && <SubCategoryList subcategories={data?.categories[activeTab].subcategories} />}
+        </>
     )
-
 }
 
 export default ListPage

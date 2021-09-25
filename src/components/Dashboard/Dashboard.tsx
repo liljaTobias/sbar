@@ -1,35 +1,38 @@
-import { AppBar, Grid, IconButton, Toolbar, Typography } from '@material-ui/core'
-import React, { useState } from 'react'
-import { useOrganization } from '../../api/orgaizationAPI'
-import CategoryTabs from './CategoryTabs'
+import { Button, Card, CardActions, CardContent, Container, Typography } from '@material-ui/core'
+import React from 'react'
+import Menu from '../Menu'
+
 import { useStyles } from './Dashboard.style'
-import SubCategoryList from './SubCategoryList'
-
-import MenuIcon from '@material-ui/icons/Menu'
-
-import HalmstadLogo from '../../images/halmstad-logo.svg'
 
 const Dashboard: React.FC = () => {
-    const { status, data, isFetching } = useOrganization('halmstad')
     const classes = useStyles()
-
-    const [activeTab, setActiveTab] = useState(0)
 
     return (
         <>
-            <AppBar className={classes.appbar} position="sticky">
-                <Toolbar>
-                    <IconButton edge="start" color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Grid container justifyContent="space-between" alignItems="center">
-                        <Typography variant="h6">{data?.organization_name}</Typography>
-                        <img src={HalmstadLogo} style={{ height: 40 }} />
-                    </Grid>
-                </Toolbar>
-                <CategoryTabs categories={data?.categories} tab={activeTab} setTab={setActiveTab} />
-            </AppBar>
-            {status === 'success' && <SubCategoryList subcategories={data.categories[activeTab].subcategories} />}
+            <Menu />
+            <Container maxWidth="xs" className={classes.container}>
+                <Card>
+                    <CardContent>
+                        <Typography color="textSecondary" gutterBottom>
+                            Introduktion till hjälpverktyget
+                        </Typography>
+                        <Typography variant="h5" gutterBottom>
+                            Rapporteringsstöd enligt SBAR
+                        </Typography>
+                        <Typography>
+                            Denna sida innehåller ett antal symtombilder. För att sjuksköterskan ska få en så
+                            fullständig bild som möjligt av patientens tillstånd finns ett antal frågor för varje
+                            symtombild. Dessa förväntas bas-personal så långt som möjligt kunna svara på när
+                            sjuksköterska kontaktas. Bedömningsstödet gör att samma frågor ställs, oavsett vilken
+                            sjuksköterska som kontaktas, samtidigt som det utgör ett lärande för baspersonal i
+                            iakttagande av patient.
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button disabled>Läs mer</Button>
+                    </CardActions>
+                </Card>
+            </Container>
         </>
     )
 }
