@@ -41,10 +41,12 @@ const ListPage: React.FC<RouteComponentProps<{ tab: string }>> = ({
         setTabsOpenInCategories(obj)
     }
 
+    console.log(tab)
+
     return (
         <>
             <Menu>
-                <CategoryTabs />
+                <CategoryTabs initialTab={tab} />
             </Menu>
             {status === 'success' && (
                 <SubCategoryList

@@ -5,18 +5,20 @@ import { useStyles } from './ListPage.style'
 
 import { useHistory } from 'react-router-dom'
 
-interface CategoryTabsProps {}
+interface CategoryTabsProps {
+    initialTab: string
+}
 
-const CategoryTabs: React.FC<CategoryTabsProps> = () => {
+const CategoryTabs: React.FC<CategoryTabsProps> = ({ initialTab }) => {
     const { status, data } = useOrganization('halmstad')
     const classes = useStyles()
     const history = useHistory()
 
-    const [activeTab, setActiveTab] = useState(0)
+    const [activeTab, setActiveTab] = useState(initialTab)
 
     const handleClick = (event, newValue) => {
         setActiveTab(newValue)
-        history.push(`/sbar/${data.categories[newValue].category_id}`)
+        history.push(`/sbar/${newValue}`)
     }
 
     if (status === 'loading') {
@@ -26,7 +28,7 @@ const CategoryTabs: React.FC<CategoryTabsProps> = () => {
     return (
         <Tabs value={activeTab} variant="scrollable" scrollButtons="auto" onChange={handleClick}>
             {data?.categories.map((c) => (
-                <Tab label={c.category_name} key={c.category_id} />
+                <Tab label={c.category_name} key={c.category_id} value={c.category_id} />
             ))}
         </Tabs>
     )
