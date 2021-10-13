@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText, Collapse } from '@material-ui/core'
+import { List, ListItem, ListItemText, Collapse, Divider } from '@material-ui/core'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import React from 'react'
@@ -28,6 +28,7 @@ const SubCategoryList: React.FC<SubCategoryListProps> = ({
                         <ListItemText primary={subcategory.subcategory_name} />
                         {openSubs[idx] ? <ExpandLess /> : <ExpandMore />}
                     </ListItem>
+                    <Divider />
                     <Collapse in={openSubs[idx]} unmountOnExit>
                         <List disablePadding>
                             {Object.entries(subcategory.actions).map(([key, value]) => (
@@ -36,6 +37,7 @@ const SubCategoryList: React.FC<SubCategoryListProps> = ({
                                 </ListItem>
                             ))}
                         </List>
+                        <Divider />
                     </Collapse>
                 </div>
             ))}
