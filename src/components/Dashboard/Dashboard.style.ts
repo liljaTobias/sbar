@@ -6,9 +6,9 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
             marginTop: spacing(5),
         },
         subCategoryList: {
-            backgroundColor: palette.subCategoryBg.main,
+            backgroundColor: palette.grey[50],
             '&:focus': {
-                backgroundColor: palette.subCategoryBg.main,
+                backgroundColor: palette.grey[50],
             },
         },
         actionList: {
