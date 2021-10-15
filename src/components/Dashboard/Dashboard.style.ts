@@ -3,7 +3,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core'
 const useStyles = makeStyles(({ spacing, palette }: Theme) =>
     createStyles({
         container: {
-            marginTop: spacing(5),
+            marginTop: spacing(3),
         },
         subCategoryList: {
             backgroundColor: palette.grey[50],

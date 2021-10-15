@@ -5,6 +5,10 @@ const useStyles = makeStyles(({ palette }: Theme) =>
         appbar: {
             backgroundColor: palette.categoryBg.main,
         },
+        menuHeader: {
+            backgroundColor: palette.background.default,
+            minHeight: 50,
+        },
     }),
 )
 

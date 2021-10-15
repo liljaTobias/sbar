@@ -1,5 +1,16 @@
 import React, { useState } from 'react'
-import { AppBar, Drawer, Grid, IconButton, List, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core'
+import {
+    AppBar,
+    Divider,
+    Drawer,
+    Grid,
+    IconButton,
+    List,
+    ListItem,
+    ListItemText,
+    Toolbar,
+    Typography,
+} from '@material-ui/core'
 import { useStyles } from './Menu.style'
 
 import MenuIcon from '@material-ui/icons/Menu'
@@ -27,12 +38,27 @@ const Menu: React.FC<MenuProps> = ({ children }) => {
     return (
         <>
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-                <List>
-                    <ListItem button onClick={() => handleLinkClick('/')}>
-                        <ListItemText primary="Dashboard" />
+                <Grid
+                    container
+                    alignItems="center"
+                    justifyContent="center"
+                    direction="column"
+                    className={classes.menuHeader}
+                >
+                    <Typography variant="h6">Meny</Typography>
+                    <Typography variant="caption">Navigera till olika delar av verktyget</Typography>
+                </Grid>
+                <Divider />
+                <List component="nav">
+                    <ListItem button onClick={() => handleLinkClick('/')} selected={history.location.pathname === '/'}>
+                        <ListItemText primary="Startsida" />
                     </ListItem>
-                    <ListItem button onClick={() => handleLinkClick(`/sbar/${data.categories[0].category_id}`)}>
-                        <ListItemText primary="SBAR" />
+                    <ListItem
+                        button
+                        onClick={() => handleLinkClick(`/sbar/${data.categories[0].category_id}`)}
+                        selected={history.location.pathname.includes('sbar')}
+                    >
+                        <ListItemText primary="SBAR" secondary="Strukturerad kommunikation" />
                     </ListItem>
                 </List>
             </Drawer>
