@@ -41,8 +41,6 @@ const ListPage: React.FC<RouteComponentProps<{ tab: string }>> = ({
         setTabsOpenInCategories(obj)
     }
 
-    console.log(tab)
-
     return (
         <>
             <Menu>
