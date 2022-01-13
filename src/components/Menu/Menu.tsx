@@ -14,15 +14,16 @@ import {
 import { useStyles } from './Menu.style'
 
 import MenuIcon from '@material-ui/icons/Menu'
-import HalmstadLogo from '../../images/halmstad-logo.svg'
 
 import { useOrganization } from '../../api/orgaizationAPI'
 import { useHistory } from 'react-router-dom'
 
+import DefaultImage from '../../images/default-logo.png'
+
 interface MenuProps {}
 
 const Menu: React.FC<MenuProps> = ({ children }) => {
-    const { status, data, isFetching } = useOrganization('halmstad')
+    const { status, data, isFetching } = useOrganization('kommunkoping')
     const classes = useStyles()
     const history = useHistory()
 
@@ -69,7 +70,7 @@ const Menu: React.FC<MenuProps> = ({ children }) => {
                     </IconButton>
                     <Grid container justifyContent="space-between" alignItems="center">
                         <Typography variant="h6">{data?.organization_name}</Typography>
-                        <img src={HalmstadLogo} style={{ height: 40 }} />
+                        <img src={DefaultImage} style={{ height: 40 }} />
                     </Grid>
                 </Toolbar>
                 {children}

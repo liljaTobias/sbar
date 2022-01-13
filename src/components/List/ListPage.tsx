@@ -14,7 +14,7 @@ const ListPage: React.FC<RouteComponentProps<{ tab: string }>> = ({
     },
 }) => {
     const [tabsOpenInCategories, setTabsOpenInCategories] = useState<any>([])
-    const { status, data } = useOrganization('halmstad')
+    const { status, data } = useOrganization('kommunkoping')
     const classes = useStyles()
 
     const activeTab = useMemo(() => {

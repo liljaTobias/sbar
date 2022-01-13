@@ -10,7 +10,7 @@ interface CategoryTabsProps {
 }
 
 const CategoryTabs: React.FC<CategoryTabsProps> = ({ initialTab }) => {
-    const { status, data } = useOrganization('halmstad')
+    const { status, data } = useOrganization('kommunkoping')
     const classes = useStyles()
     const history = useHistory()
 
